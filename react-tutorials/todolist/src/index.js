@@ -223,4 +223,32 @@ class ClockHasState extends React.Component {
   }
 }
 
+function FormattedDate(props) {
+  return <h2>It is {props.date.toLocaleTimeString()}.</h2>
+}
+
   ReactDOM.render(<ClockHasState />, document.getElementById("root"));
+
+  // Wrong way using state
+  // ~~ inside function ~~
+  //this.state.name = 'Yujin';  // This will not re-render a component!!
+  // The only place where you can assign `this.state` is the Constructor !!
+
+  /// ==> this.setState({name: 'Yujin'}); // Correct way!
+
+  function App() {
+    return (
+      <div>
+        <ClockHasState />
+        <ClockHasState />
+        <ClockHasState />
+      </div>
+    );
+  }
+
+  ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+  );
+
+
