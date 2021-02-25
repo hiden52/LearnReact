@@ -163,7 +163,7 @@ import "./index.css";
 //   ReactDOM.render(<Clock date={new Date()} />, document.getElementById("root"));
 // }
 
-setInterval(tick, 1000);
+//setInterval(tick, 1000);
 
 // Function -> Class
 
@@ -193,6 +193,9 @@ class ClockHasState extends React.Component {
   }
 
   // Lifecycle methods
+
+  // Special methods 'componentDidMount()', 'componentWillUnmount()'
+  // == Lifecycle Method !!
   componentDidMount() {
     this.timerID = setInterval(
       () => this.tick(),
@@ -220,6 +223,4 @@ class ClockHasState extends React.Component {
   }
 }
 
-function tick() {
   ReactDOM.render(<ClockHasState />, document.getElementById("root"));
-}
