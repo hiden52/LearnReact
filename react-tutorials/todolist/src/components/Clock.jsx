@@ -1,6 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
 
 // const name = 'Wings of Liberty';
 // const element = <h1>Starcraft II : {name}</h1>;
@@ -169,22 +167,23 @@ import "./index.css";
 
 // 1. extends React.Component
 
-class Clock extends React.Component {
-  // 2. Add 'render()' is empty method
-  // render() {}
-  // Move the body of the function into render() method
-  render() {
-    return (
-      <div>
-        <h1>Hello, world!</h1>
-        {/* Replace props with this.props */}
-        <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
-      </div>
-    );
-  }
-}
+// class Clock extends React.Component {
+//   // 2. Add 'render()' is empty method
+//   // render() {}
+//   // Move the body of the function into render() method
+//   render() {
+//     return (
+//       <div>
+//         <h1>Hello, world!</h1>
+//         {/* Replace props with this.props */}
+//         <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+//       </div>
+//     );
+//   }
+// }
 
-class ClockHasState extends React.Component {
+// Clock has state
+class Clock extends React.Component {
   // Add class constructor that assigns the initial this.state
   constructor(props) {
     // Class components should always call the base constructor with props
@@ -227,8 +226,6 @@ function FormattedDate(props) {
   return <h2>It is {props.date.toLocaleTimeString()}.</h2>
 }
 
-  ReactDOM.render(<ClockHasState />, document.getElementById("root"));
-
   // Wrong way using state
   // ~~ inside function ~~
   //this.state.name = 'Yujin';  // This will not re-render a component!!
@@ -236,19 +233,4 @@ function FormattedDate(props) {
 
   /// ==> this.setState({name: 'Yujin'}); // Correct way!
 
-  function App() {
-    return (
-      <div>
-        <ClockHasState />
-        <ClockHasState />
-        <ClockHasState />
-      </div>
-    );
-  }
-
-  ReactDOM.render(
-    <App />,
-    document.getElementById('root')
-  );
-
-
+  export default Clock;
