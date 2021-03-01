@@ -231,6 +231,6 @@ function FormattedDate(props) {
   //this.state.name = 'Yujin';  // This will not re-render a component!!
   // The only place where you can assign `this.state` is the Constructor !!
 
-  /// ==> this.setState({name: 'Yujin'}); // Correct way!
+  /// ==> this.setState({namjse: 'Yujin'}); // Correct way!
 
   export default Clock;

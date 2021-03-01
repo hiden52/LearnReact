@@ -3,6 +3,7 @@ import Clock from "./Clock";
 import Page from "./Warn";
 import List from "./List";
 import NameForm from "./Form";
+import Calculator from './Calculator';
 
 
   // Wrong way using state
@@ -24,6 +25,7 @@ import NameForm from "./Form";
         <Page />
         <List numbers={numbers}/>
         <NameForm />
+        <Calculator temperature="100" />
       </div>
       
     );
