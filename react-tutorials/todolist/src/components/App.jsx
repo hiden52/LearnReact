@@ -1,6 +1,7 @@
 import React from "react";
 import Clock from "./Clock";
 import Page from "./Warn";
+import List from "./List";
 
 
   // Wrong way using state
@@ -11,6 +12,7 @@ import Page from "./Warn";
   /// ==> this.setState({name: 'Yujin'}); // Correct way!
 
   
+  
   function App() {
     return (
       <div>
@@ -18,6 +20,7 @@ import Page from "./Warn";
         <Clock />
         <Clock />
         <Page />
+        <List />
       </div>
       
     );
