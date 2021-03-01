@@ -2,6 +2,7 @@ import React from "react";
 import Clock from "./Clock";
 import Page from "./Warn";
 import List from "./List";
+import NameForm from "./Form";
 
 
   // Wrong way using state
@@ -12,6 +13,7 @@ import List from "./List";
   /// ==> this.setState({name: 'Yujin'}); // Correct way!
 
   
+  const numbers = [7, 6, 4, 9 ,3, 2, 3, 12, 12 ,247  ];
   
   function App() {
     return (
@@ -20,7 +22,8 @@ import List from "./List";
         <Clock />
         <Clock />
         <Page />
-        <List />
+        <List numbers={numbers}/>
+        <NameForm />
       </div>
       
     );
