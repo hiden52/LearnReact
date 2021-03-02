@@ -222,9 +222,9 @@ class Clock extends React.Component {
   }
 }
 
-function FormattedDate(props) {
-  return <h2>It is {props.date.toLocaleTimeString()}.</h2>
-}
+// function FormattedDate(props) {
+//   return <h2>It is {props.date.toLocaleTimeString()}.</h2>
+// }
 
   // Wrong way using state
   // ~~ inside function ~~

@@ -1,9 +1,13 @@
 import React from "react";
 
+// Single of source of truth
+// very very very very important!
+
 function BoilingVerdict(props) {
   if (props.celsius >= 100) return <p>The water would boil.</p>;
   return <p>The warter would not boil</p>;
 }
+
 const scaleNames = {
   c: "Celsius",
   f: "Fahrenheit",
@@ -18,7 +22,7 @@ function toCelsius(fahrenheit) {
 
 function tryConvert(temperature, convert) {
   const input = parseFloat(temperature);
-  if (isNaN(input)) return "";
+  if (isNaN(input)) return null;
 
   const output = convert(input);
   const rounded = Math.round(output * 1000) / 1000;
@@ -53,7 +57,7 @@ class Calculator extends React.Component {
     super(props);
     this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
     this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
-    this.state = { temperature: "", scale: "c" };
+    this.state = { temperature: props.temperature || '', scale: "c" };
   }
 
   handleCelsiusChange(temperature) {
@@ -83,7 +87,7 @@ class Calculator extends React.Component {
           temperature={fahrenheit}
           onTemperatureChange={this.handleFahrenheitChange}
         />
-        <BoilingVerdict />
+        <BoilingVerdict celsius={parseFloat(celsius)}/>
       </div>
     );
   }

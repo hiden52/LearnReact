@@ -25,7 +25,7 @@ import Calculator from './Calculator';
         <Page />
         <List numbers={numbers}/>
         <NameForm />
-        <Calculator temperature="100" />
+        <Calculator />
       </div>
       
     );

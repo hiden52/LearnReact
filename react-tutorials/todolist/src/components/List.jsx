@@ -26,7 +26,7 @@
 //       </ul>
 //   );
 // }
-
+let  listId = 0;
 // Extract listItems
 function ListItem(props) {
   const value = props.value;
@@ -53,7 +53,7 @@ function NumberList(props) {
         <ul>
             {numbers.map(number => 
                 <ListItem 
-                    key={number.toString()}
+                    key={listId++}
                     value={number}
                 />
             )}
