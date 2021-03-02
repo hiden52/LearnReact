@@ -4,6 +4,7 @@ import Page from "./Warn";
 import List from "./List";
 import NameForm from "./Form";
 import Calculator from './Calculator';
+import Composition from './Composition'
 
 
   // Wrong way using state
@@ -26,6 +27,7 @@ import Calculator from './Calculator';
         <List numbers={numbers}/>
         <NameForm />
         <Calculator />
+        <Composition />
       </div>
       
     );
