@@ -6,6 +6,7 @@
 // import Calculator from './Calculator';
 // import Composition from './Composition'
 import TodoList from "./TodoList";
+import "../scss/App.scss";
 
 // Wrong way using state
 // ~~ inside function ~~
@@ -34,7 +35,7 @@ import TodoList from "./TodoList";
 const tasks = ['Coding', 'Cooking', 'Reading'];
 function App() {
 	return (
-		<div>
+		<div className="app">
 			<TodoList tasks={tasks}/>
 		</div>
 	);
