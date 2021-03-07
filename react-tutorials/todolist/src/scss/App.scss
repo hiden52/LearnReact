@@ -1,4 +1,56 @@
+// colors
+$mainColor: #2979ff;
+$mainDarkColor: #004ecb;
+$mainLightColor: #75a7ff;
+$mainTextColor: #fafafa;
+
+// Animations
+@mixin ani($num) {
+    transfrom: scale(1.2)
+}
+
+body {
+    margin: 0;
+}
+
 .app {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+    background-color: $mainColor;
+
+	.todo-list {
+        background-color: white;
+        display: flex;
+        flex-flow: column wrap;
+        // padding: 10px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        
+
+        .todo-header{
+            .date-heading{
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+            .clock{
+                display: flex;
+                flex-direction: row-reverse;
+            }
+        }
+
+		.todo-box {
+            
+            
+                .task:hover{
+
+                    transform: scale(1.2);
+                    border: solid 1px gray;
+                    
+                    @include ani(0.3s);
+                }
+            
+		}
+	}
 }

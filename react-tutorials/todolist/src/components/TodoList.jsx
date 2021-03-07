@@ -91,7 +91,7 @@ class TodoHeader extends React.Component {
 		return (
 			<div className="todo-header">
 				<Today />
-                <p>{this.state.time}</p>
+                <p className="clock">{this.state.time}</p>
 			</div>
 		);
 	}
