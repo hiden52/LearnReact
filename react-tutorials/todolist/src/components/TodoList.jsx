@@ -10,6 +10,7 @@ class Tasks extends React.Component {
 		tasks.forEach((task) => {
 			mergedTasks.push(
 				<div className="task" key={count++}>
+					<div className="hover-effect"></div>
 					<input
 						className="task-checkbox"
 						type="checkbox"
@@ -20,7 +21,7 @@ class Tasks extends React.Component {
 				</div>
 			);
 		});
-        return mergedTasks;
+		return mergedTasks;
 	}
 }
 
@@ -36,13 +37,15 @@ class TaskInput extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="task-input">
 				<input
 					type="text"
 					value={this.props.taskInputValue}
 					placeholder="ToDo!"
 				/>
-				<button className="submit-btn" onClick={this.handleBtnClick} />
+				<button className="submit-btn" onClick={this.handleBtnClick}>
+					+
+				</button>
 			</div>
 		);
 	}
@@ -68,30 +71,27 @@ class Today extends React.Component {
 	}
 }
 class TodoHeader extends React.Component {
-    constructor(props) {
-        super(props);
-        this.startClock = this.startClock.bind(this);
-        this.state ={
-            time : timeNow()
-        }
-    }
-    componentDidMount() {
-        this.timeID = setInterval(
-            () => this.startClock(),
-            1000
-        );
-    }
-    componentWillUnmount() {
-        clearInterval(this.timeID);
-    }
-    startClock() {
-        this.setState({time: timeNow()});
-    }
+	constructor(props) {
+		super(props);
+		this.startClock = this.startClock.bind(this);
+		this.state = {
+			time: timeNow(),
+		};
+	}
+	componentDidMount() {
+		this.timeID = setInterval(() => this.startClock(), 1000);
+	}
+	componentWillUnmount() {
+		clearInterval(this.timeID);
+	}
+	startClock() {
+		this.setState({ time: timeNow() });
+	}
 	render() {
 		return (
 			<div className="todo-header">
 				<Today />
-                <p className="clock">{this.state.time}</p>
+				<p className="clock">{this.state.time}</p>
 			</div>
 		);
 	}

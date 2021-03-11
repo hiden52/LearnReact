@@ -2,13 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./components/App";
-import Table from "./components/FilterableProductTable";
+//import Table from "./components/FilterableProductTable";
 
-function tick() {
-	ReactDOM.render(<App />, document.getElementById("root"));
-}
+ReactDOM.render(<App />, document.getElementById('root'));
+// function tick() {
+// 	ReactDOM.render(<App />, document.getElementById("root"));
+// }
 
-setInterval(tick, 1000);
+// setInterval(tick, 1000);
 // const PRODUCTS = [
 // 	{
 // 		category: "Sporting Goods",

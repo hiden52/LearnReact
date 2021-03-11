@@ -6,11 +6,13 @@ $mainTextColor: #fafafa;
 
 // Animations
 @mixin ani($num) {
-    transfrom: scale(1.2)
+	transform: scale($num);
 }
 
-body {
-    margin: 0;
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 .app {
@@ -18,39 +20,96 @@ body {
 	height: 100vh;
 	justify-content: center;
 	align-items: center;
-    background-color: $mainColor;
+	background-image: linear-gradient(
+		to right,
+		#7474bf 0%,
+		#348ac7 51%,
+		#7474bf 93%
+	);
 
 	.todo-list {
-        background-color: white;
-        display: flex;
-        flex-flow: column wrap;
-        // padding: 10px;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        
+		background-color: white;
+		display: flex;
+		flex-flow: column wrap;
+		// padding: 10px;
+		border: {
+			top: {
+				left-radius: 5px;
+				right-radius: 5px;
+			}
+			bottom: {
+				left-radius: 5px;
+				right-radius: 5px;
+			}
+		}
 
-        .todo-header{
-            .date-heading{
-                margin-top: 0px;
-                margin-bottom: 0px;
-            }
-            .clock{
-                display: flex;
-                flex-direction: row-reverse;
-            }
-        }
+		.todo-header {
+			padding: 10px 15px 5px;
+
+			.date-heading {
+				margin-top: 0px;
+				margin-bottom: 0px;
+			}
+			.clock {
+				display: flex;
+				flex-direction: row-reverse;
+			}
+		}
 
 		.todo-box {
-            
-            
-                .task:hover{
+			width: 100%;
 
-                    transform: scale(1.2);
-                    border: solid 1px gray;
-                    
-                    @include ani(0.3s);
+			& > * {
+				padding-left: 15px;
+			}
+
+			.task {
+                position: relative;
+                overflow: hidden;
+				.hover-effect {
+					width: 100%;
+					height: 100%;
+					left: -100%;
+					background: #2979ff;
+					position: absolute;
+					transition: all 0.5s ease;
+					z-index: 1;
+				}
+
+                .task-name, .task-checkbox {
+                    position: relative;
+                    z-index: 2;
                 }
-            
+
+                .task-name {
+                    padding-left: 10px;
+                }
+
+				&:hover {
+                    .hover-effect{
+                        left: 0;
+                    }
+                    .task-name {
+                        color: #fff;
+                    }
+
+				}
+			}
+			.task-input {
+                padding-bottom: 15px;
+				input {
+					border: none;
+					&:focus {
+						outline: none;
+						border-bottom: 1px solid;
+					}
+				}
+
+				.submit-btn {
+                    float: right;
+                    margin-right: 10px;
+				}
+			}
 		}
 	}
 }
