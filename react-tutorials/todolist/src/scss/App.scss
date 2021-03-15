@@ -80,6 +80,7 @@ $mainTextColor: #fafafa;
 
 		.todo-box {
 			width: 100%;
+			padding: 10px 10px 5px 10px;
 
 			& > * {
 				padding-left: 15px;
@@ -106,7 +107,6 @@ $mainTextColor: #fafafa;
 				}
 
 				.task-name {
-					padding-left: 10px;
 					transition: 0.7s ease-out;
 				}
 
@@ -132,8 +132,10 @@ $mainTextColor: #fafafa;
 				}
 			}
 			.task-input {
-				padding-bottom: 15px;
+				margin-top: 5px;
+				padding-bottom: 10px;
 				input {
+					width: 80%;
 					border: none;
 					&:focus {
 						outline: none;
