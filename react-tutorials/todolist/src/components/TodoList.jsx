@@ -11,13 +11,10 @@ class Tasks extends React.Component {
 			mergedTasks.push(
 				<div className="task" key={count++}>
 					<div className="hover-effect"></div>
-					<input
-						className="task-checkbox"
-						type="checkbox"
-						checked={this.props.isCheked}
-						onChange=""
-					/>
-					<span className="task-name">{task}</span>
+					<span className="task-name">
+						<a href="#none" role="button"><i class="fas fa-check-circle" /></a>
+						{task}
+					</span>
 				</div>
 			);
 		});

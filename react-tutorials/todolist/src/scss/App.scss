@@ -31,7 +31,7 @@ $mainTextColor: #fafafa;
 		width: 300px;
 		height: 100px;
 		border: {
-			radius: 5px
+			radius: 5px;
 		}
 		box-shadow: 3px 3px 5px black;
 
@@ -86,8 +86,8 @@ $mainTextColor: #fafafa;
 			}
 
 			.task {
-                position: relative;
-                overflow: hidden;
+				position: relative;
+				overflow: hidden;
 				transition: 0.25s;
 				.hover-effect {
 					width: 100%;
@@ -99,32 +99,40 @@ $mainTextColor: #fafafa;
 					z-index: 1;
 				}
 
-                .task-name, .task-checkbox {
-                    position: relative;
-                    z-index: 2;
-                }
+				.task-name,
+				.task-checkbox {
+					position: relative;
+					z-index: 2;
+				}
 
-                .task-name {
-                    padding-left: 10px;
+				.task-name {
+					padding-left: 10px;
 					transition: 0.7s ease-out;
-                }
+				}
 
 				&:hover {
 					@include shadowing();
 					transition: 0.25s;
-                    .hover-effect{
-                        left: 0;
-                    }
-                    .task-name {
-                        color: $mainTextColor;
+					.hover-effect {
+						left: 0;
+					}
+					.task-name {
+						color: $mainTextColor;
 						transition: all 0.5s;
-                    }
-					
-
+					}
+				}
+				a {
+					text-decoration: none;
+					&:link, &:visited {
+						color: inherit;
+					}
+					i {
+						margin-right: 10px;
+					}
 				}
 			}
 			.task-input {
-                padding-bottom: 15px;
+				padding-bottom: 15px;
 				input {
 					border: none;
 					&:focus {
@@ -134,8 +142,8 @@ $mainTextColor: #fafafa;
 				}
 
 				.submit-btn {
-                    float: right;
-                    margin-right: 10px;
+					float: right;
+					margin-right: 10px;
 					height: 25px;
 					width: 25px;
 					padding-top: 3.5px;
@@ -146,8 +154,7 @@ $mainTextColor: #fafafa;
 					color: $mainTextColor;
 					border: none {
 						radius: 100%;
-						
-					};
+					}
 					text-align: center;
 					font: {
 						weight: bold;
@@ -159,10 +166,7 @@ $mainTextColor: #fafafa;
 						background-color: $mainColor;
 						transform: scale(1.125);
 						transition: all 0.1s ease;
-						
 					}
-
-
 				}
 			}
 		}
