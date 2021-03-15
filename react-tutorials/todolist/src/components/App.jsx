@@ -1,5 +1,5 @@
 //import React from "react";
-// import Clock from "./Clock";
+import Clock from "./Clock";
 // import Page from "./Warn";
 // import List from "./List";
 // import NameForm from "./Form";
@@ -36,7 +36,9 @@ const tasks = ['Coding', 'Cooking', 'Reading'];
 function App() {
 	return (
 		<div className="app">
+			<Clock />
 			<TodoList tasks={tasks}/>
+			<div className="clear" />
 		</div>
 	);
 }

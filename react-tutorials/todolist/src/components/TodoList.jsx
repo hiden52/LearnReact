@@ -73,7 +73,7 @@ class Today extends React.Component {
 class TodoHeader extends React.Component {
 	constructor(props) {
 		super(props);
-		this.startClock = this.startClock.bind(this);
+		//this.startClock = this.startClock.bind(this);
 		this.state = {
 			time: timeNow(),
 		};
@@ -91,7 +91,9 @@ class TodoHeader extends React.Component {
 		return (
 			<div className="todo-header">
 				<Today />
-				<p className="clock">{this.state.time}</p>
+				{	// replaced to other Component
+					//<p className="clock">{this.state.time}</p> 
+				}
 			</div>
 		);
 	}

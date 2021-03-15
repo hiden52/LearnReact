@@ -5,7 +5,7 @@ $mainLightColor: #75a7ff;
 $mainTextColor: #fafafa;
 
 // Animations
-@mixin shadowing {
+@mixin shadowing() {
 	box-shadow: 2px 3px 5px black;
 }
 
@@ -17,8 +17,8 @@ $mainTextColor: #fafafa;
 
 .app {
 	display: flex;
+	flex-flow: column;
 	height: 100vh;
-	justify-content: center;
 	align-items: center;
 	background-image: linear-gradient(
 		to right,
@@ -26,6 +26,25 @@ $mainTextColor: #fafafa;
 		#348ac7 51%,
 		#7474bf 93%
 	);
+
+	.clock {
+		width: 300px;
+		height: 100px;
+		border: {
+			radius: 5px
+		}
+		box-shadow: 3px 3px 5px black;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+
+		background-color: rgba(255, 255, 255, 0.3);
+
+		margin-top: 150px;
+		margin-bottom: 50px;
+	}
 
 	.todo-list {
 		background-color: white;
@@ -69,13 +88,14 @@ $mainTextColor: #fafafa;
 			.task {
                 position: relative;
                 overflow: hidden;
+				transition: 0.25s;
 				.hover-effect {
 					width: 100%;
 					height: 100%;
 					left: -100%;
 					background: #2979ff;
 					position: absolute;
-					transition: all 0.25s ease;
+					transition: all 0.7s ease;
 					z-index: 1;
 				}
 
@@ -86,16 +106,20 @@ $mainTextColor: #fafafa;
 
                 .task-name {
                     padding-left: 10px;
+					transition: 0.7s ease-out;
                 }
 
 				&:hover {
 					@include shadowing();
+					transition: 0.25s;
                     .hover-effect{
                         left: 0;
                     }
                     .task-name {
                         color: $mainTextColor;
+						transition: all 0.5s;
                     }
+					
 
 				}
 			}
@@ -115,6 +139,8 @@ $mainTextColor: #fafafa;
 					height: 25px;
 					width: 25px;
 					padding-top: 3.5px;
+					@include shadowing();
+					transition: all 0.5s ease;
 
 					background-color: $mainDarkColor;
 					color: $mainTextColor;
@@ -131,8 +157,9 @@ $mainTextColor: #fafafa;
 
 					&:hover {
 						background-color: $mainColor;
+						transform: scale(1.125);
 						transition: all 0.1s ease;
-						@include shadowing();
+						
 					}
 
 
