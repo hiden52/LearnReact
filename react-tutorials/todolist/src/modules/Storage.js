@@ -1,17 +1,26 @@
-const Storage = window.localStorage;
-const TASK = 'tasks';
-
+const storage = window.localStorage;
+const TASK = "tasks";
 
 function loadTasks() {
-    return Storage.getItem(TASK);
+    // If you don't use JSON.parse(), this return a string object instead of a array object!
+	return JSON.parse(storage.getItem(TASK));
 }
 
-function init() {
-    const tasks = loadTasks();
-    if (tasks) {
-        return tasks
-    }
+function initTasks() {
+	const tasks = loadTasks();
 
-    Storage.setItem("tasks", []);
-
+	if (tasks) {
+		return tasks;
+	} else {
+        // Must use JSON.stringify() when you store a Array to localstorage of borwser!!
+		storage.setItem(TASK, JSON.stringify(["hello", "lol"]));
+		return JSON.parse(loadTasks());
+	}
 }
+
+function inputNewTask(task) {
+	const tasks = loadTasks().concat(task);
+	storage.setItem("TASK", tasks);
+}
+
+export { initTasks, inputNewTask };

@@ -6,7 +6,9 @@ import Clock from "./Clock";
 // import Calculator from './Calculator';
 // import Composition from './Composition'
 import TodoList from "./TodoList";
+import * as Storage from "../modules/Storage";
 import "../scss/App.scss";
+
 
 // Wrong way using state
 // ~~ inside function ~~
@@ -32,7 +34,8 @@ import "../scss/App.scss";
 
 //   );
 // }
-const tasks = ['Coding', 'Cooking', 'Reading'];
+const tasks = Storage.initTasks();
+console.log(tasks);
 function App() {
 	return (
 		<div className="app">

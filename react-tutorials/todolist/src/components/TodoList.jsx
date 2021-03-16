@@ -1,5 +1,6 @@
 import React from "react";
 import { TODAY, timeNow } from "../modules/Date";
+import * as Storage from "../modules/Storage";
 
 class Tasks extends React.Component {
 	render() {
