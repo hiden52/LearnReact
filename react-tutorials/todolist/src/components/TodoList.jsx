@@ -13,7 +13,9 @@ class Tasks extends React.Component {
 				<div className="task" key={count++}>
 					<div className="hover-effect"></div>
 					<span className="task-name">
-						<a href="#none" role="button"><i class="fas fa-check-circle" /></a>
+						<a href="#none" role="button">
+							<i class="fas fa-check-circle" />
+						</a>
 						{task}
 					</span>
 				</div>
@@ -27,10 +29,14 @@ class TaskInput extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleBtnClick = this.handleBtnClick.bind(this);
+		this.handleChangeInput = this.handleChangeInput.bind(this);
 	}
 
 	handleBtnClick(e) {
 		this.props.onTaskBtnClick(e);
+	}
+	handleChangeInput(e) {
+		this.props.onInputChange(e.target.value);
 	}
 
 	render() {
@@ -39,6 +45,7 @@ class TaskInput extends React.Component {
 				<input
 					type="text"
 					value={this.props.taskInputValue}
+					onChange={this.handleChangeInput}
 					placeholder="ToDo!"
 				/>
 				<button className="submit-btn" onClick={this.handleBtnClick}>
@@ -50,6 +57,18 @@ class TaskInput extends React.Component {
 }
 
 class ListBox extends React.Component {
+	constructor(props) {
+		super(props);
+		this.handleBtnClick = this.handleBtnClick.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
+	}
+
+	handleBtnClick(e) {
+		this.props.handleBtnClick(e);
+	}
+	handleInputChange(e) {
+		this.props.onInputChange(e);
+	}
 	render() {
 		return (
 			<div className="todo-box">
@@ -57,7 +76,11 @@ class ListBox extends React.Component {
 					tasks={this.props.tasks}
 					isCheked={this.props.isCheked}
 				/>
-				<TaskInput onTaskBtnClick={this.handleBtnClick} />
+				<TaskInput
+					onTaskBtnClick={this.handleBtnClick}
+					onInputChange={this.handleInputChange}
+					taskInputValue={this.props.taskInputValue}
+				/>
 			</div>
 		);
 	}
@@ -89,8 +112,9 @@ class TodoHeader extends React.Component {
 		return (
 			<div className="todo-header">
 				<Today />
-				{	// replaced to other Component
-					//<p className="clock">{this.state.time}</p> 
+				{
+					// replaced to other Component
+					//<p className="clock">{this.state.time}</p>
 				}
 			</div>
 		);
@@ -98,11 +122,30 @@ class TodoHeader extends React.Component {
 }
 
 class TodoList extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			tasks: this.props.tasks,
+			taskInputValue: ""
+		};
+	}
+
+	handleBtnClick = () => {};
+	handleInputChange = (taskInputValue) => {
+		this.setState({
+			taskInputValue : taskInputValue
+		})
+	};
 	render() {
 		return (
 			<div className="todo-list">
 				<TodoHeader />
-				<ListBox tasks={this.props.tasks} />
+				<ListBox
+					tasks={this.state.tasks}
+					handleBtnClick={this.handleBtnClick}
+					onInputChange={this.handleInputChange}
+					taskInputValue={this.state.taskInputValue}
+				/>
 			</div>
 		);
 	}
