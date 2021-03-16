@@ -13,7 +13,7 @@ function initTasks() {
 		return tasks;
 	} else {
         // Must use JSON.stringify() when you store a Array to localstorage of borwser!!
-		storage.setItem(TASK, JSON.stringify(["hello", "lol"]));
+		storage.setItem(TASK, JSON.stringify(["Hello! Input a new Task!!"]));
 		return JSON.parse(loadTasks());
 	}
 }
