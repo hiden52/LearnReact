@@ -130,7 +130,7 @@ class TodoList extends React.Component {
 		};
 	}
 
-	handleBtnClick = () => {};
+	handleBtnClick = () => { };
 	handleInputChange = (taskInputValue) => {
 		this.setState({
 			taskInputValue : taskInputValue
