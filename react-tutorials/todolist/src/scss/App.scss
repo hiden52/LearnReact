@@ -109,6 +109,11 @@ $mainTextColor: #fafafa;
 				.task-name {
 					transition: 0.7s ease-out;
 				}
+				.finished-task {
+					color: gray;
+					text-decoration: line-through;
+					
+				}
 
 				&:hover {
 					@include shadowing();

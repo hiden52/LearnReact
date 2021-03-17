@@ -3,6 +3,10 @@ import { TODAY, timeNow } from "../modules/Date";
 import * as Storage from "../modules/Storage";
 
 class Tasks extends React.Component {
+	handleDoneBtnClick = (e) => {
+		e.target.parentElement.parentElement.classList.toggle("finished-task");
+	};
+
 	render() {
 		const tasks = this.props.tasks;
 		let count = 0;
@@ -14,7 +18,7 @@ class Tasks extends React.Component {
 					<div className="hover-effect"></div>
 					<span className="task-name">
 						<a href="#none" role="button">
-							<i className="fas fa-check-circle" />
+							<i className="fas fa-check-circle" onClick={this.handleDoneBtnClick}/>
 						</a>
 						{task}
 					</span>
