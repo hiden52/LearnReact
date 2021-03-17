@@ -20,7 +20,7 @@ function initTasks() {
 
 function inputNewTask(task) {
 	const tasks = loadTasks().concat(task);
-	storage.setItem("TASK", tasks);
+	storage.setItem(TASK, JSON.stringify(tasks));
 }
 
-export { initTasks, inputNewTask };
+export { initTasks, inputNewTask, loadTasks };

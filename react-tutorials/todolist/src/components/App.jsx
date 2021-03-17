@@ -8,7 +8,7 @@ import Clock from "./Clock";
 import TodoList from "./TodoList";
 import * as Storage from "../modules/Storage";
 import "../scss/App.scss";
-
+import React from "react";
 
 // Wrong way using state
 // ~~ inside function ~~
@@ -34,18 +34,36 @@ import "../scss/App.scss";
 
 //   );
 // }
-const tasks = Storage.initTasks();
-console.log(tasks);
-function App() {
-	return (
-		<div className="app">
-			<Clock />
-			<TodoList tasks={tasks}/>
-			<div className="clear" />
-		</div>
-	);
-}
+//console.log(tasks);	// debugging code
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			tasks: Storage.initTasks(),
+		};
+	}
 
+	handlePostTask = (postTaskValue) => {
+		//console.log(postTaskValue);
+		Storage.inputNewTask(postTaskValue);
+		this.setState({
+			tasks: Storage.loadTasks(),
+		});
+	};
+
+	render() {
+		return (
+			<div className="app">
+				<Clock />
+				<TodoList
+					tasks={this.state.tasks}
+					onTaskPost={this.handlePostTask}
+				/>
+				<div className="clear" />
+			</div>
+		);
+	}
+}
 
 export default App;
 

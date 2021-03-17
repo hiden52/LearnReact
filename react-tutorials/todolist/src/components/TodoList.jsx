@@ -14,7 +14,7 @@ class Tasks extends React.Component {
 					<div className="hover-effect"></div>
 					<span className="task-name">
 						<a href="#none" role="button">
-							<i class="fas fa-check-circle" />
+							<i className="fas fa-check-circle" />
 						</a>
 						{task}
 					</span>
@@ -30,10 +30,15 @@ class TaskInput extends React.Component {
 		super(props);
 		this.handleBtnClick = this.handleBtnClick.bind(this);
 		this.handleChangeInput = this.handleChangeInput.bind(this);
+		this.handleSubmitInput = this.handleSubmitInput.bind(this);
 	}
 
-	handleBtnClick(e) {
-		this.props.onTaskBtnClick(e);
+	handleBtnClick() {
+		this.props.onTaskPost();
+	}
+	handleSubmitInput(e) {
+		e.preventDefault();
+		this.props.onTaskPost();
 	}
 	handleChangeInput(e) {
 		this.props.onInputChange(e.target.value);
@@ -41,17 +46,18 @@ class TaskInput extends React.Component {
 
 	render() {
 		return (
-			<div className="task-input">
+			<form className="task-input" onSubmit={this.handleSubmitInput} >
 				<input
 					type="text"
 					value={this.props.taskInputValue}
 					onChange={this.handleChangeInput}
+					
 					placeholder="ToDo!"
 				/>
-				<button className="submit-btn" onClick={this.handleBtnClick}>
+				<button className="submit-btn" type="submit">
 					+
 				</button>
-			</div>
+			</form>
 		);
 	}
 }
@@ -59,12 +65,12 @@ class TaskInput extends React.Component {
 class ListBox extends React.Component {
 	constructor(props) {
 		super(props);
-		this.handleBtnClick = this.handleBtnClick.bind(this);
+		this.handlePostTask = this.handlePostTask.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
-	handleBtnClick(e) {
-		this.props.handleBtnClick(e);
+	handlePostTask() {
+		this.props.onTaskPost();
 	}
 	handleInputChange(e) {
 		this.props.onInputChange(e);
@@ -77,7 +83,7 @@ class ListBox extends React.Component {
 					isCheked={this.props.isCheked}
 				/>
 				<TaskInput
-					onTaskBtnClick={this.handleBtnClick}
+					onTaskPost={this.handlePostTask}
 					onInputChange={this.handleInputChange}
 					taskInputValue={this.props.taskInputValue}
 				/>
@@ -125,24 +131,28 @@ class TodoList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			tasks: this.props.tasks,
+			//tasks: this.props.tasks,
 			taskInputValue: ""
 		};
 	}
 
-	handleBtnClick = () => { };
+	handlePostTask = () => { 
+		const postTaskValue = this.state.taskInputValue;
+		this.setState({taskInputValue:""});
+		this.props.onTaskPost(postTaskValue);
+	};
 	handleInputChange = (taskInputValue) => {
 		this.setState({
 			taskInputValue : taskInputValue
-		})
+		});
 	};
 	render() {
 		return (
 			<div className="todo-list">
 				<TodoHeader />
 				<ListBox
-					tasks={this.state.tasks}
-					handleBtnClick={this.handleBtnClick}
+					tasks={this.props.tasks}
+					onTaskPost={this.handlePostTask}
 					onInputChange={this.handleInputChange}
 					taskInputValue={this.state.taskInputValue}
 				/>
