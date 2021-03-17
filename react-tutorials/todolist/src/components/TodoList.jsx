@@ -139,6 +139,7 @@ class TodoList extends React.Component {
 	handlePostTask = () => { 
 		const postTaskValue = this.state.taskInputValue;
 		this.setState({taskInputValue:""});
+		// input value를 현 컴포넌트의 state로 두고 그것을 부모 컴포넌트에 넘겨서 처리.
 		this.props.onTaskPost(postTaskValue);
 	};
 	handleInputChange = (taskInputValue) => {
