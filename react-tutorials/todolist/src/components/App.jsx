@@ -43,6 +43,12 @@ class App extends React.Component {
 		};
 	}
 
+	handleDeleteTask = (targetTask) => {
+		Storage.deleteTask(targetTask);
+		this.setState({
+			tasks: Storage.loadTasks(),
+		})
+	}
 	handlePostTask = (postTaskValue) => {
 		//console.log(postTaskValue);
 		// input의 value를 하위 컴포넌트에서 argument로 받아서 처리
@@ -59,6 +65,7 @@ class App extends React.Component {
 				<TodoList
 					tasks={this.state.tasks}
 					onTaskPost={this.handlePostTask}
+					onTaskDelete={this.handleDeleteTask}
 				/>
 				<div className="clear" />
 			</div>

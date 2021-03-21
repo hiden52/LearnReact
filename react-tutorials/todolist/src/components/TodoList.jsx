@@ -1,11 +1,17 @@
 import React from "react";
 import { TODAY, timeNow } from "../modules/Date";
-import * as Storage from "../modules/Storage";
+//import * as Storage from "../modules/Storage";
 
 class Tasks extends React.Component {
+	
 	handleDoneBtnClick = (e) => {
-		e.target.parentElement.parentElement.classList.toggle("finished-task");
+		e.target.parentElement.nextElementSibling.classList.toggle("finished-task");
 	};
+
+	handleDeleteTask = (e) => {
+		if(e.target.classList.contains("finished-task"))
+		this.props.onTaskDelete(e.target.innerText);
+	}
 
 	render() {
 		const tasks = this.props.tasks;
@@ -20,7 +26,8 @@ class Tasks extends React.Component {
 						<a href="#none" role="button">
 							<i className="fas fa-check-circle" onClick={this.handleDoneBtnClick}/>
 						</a>
-						{task}
+						<span className="task-value" onClick={this.handleDeleteTask}>{task}</span>
+						
 					</span>
 				</div>
 			);
@@ -85,6 +92,7 @@ class ListBox extends React.Component {
 				<Tasks
 					tasks={this.props.tasks}
 					isCheked={this.props.isCheked}
+					onTaskDelete={this.props.onTaskDelete}
 				/>
 				<TaskInput
 					onTaskPost={this.handlePostTask}
@@ -160,6 +168,7 @@ class TodoList extends React.Component {
 					onTaskPost={this.handlePostTask}
 					onInputChange={this.handleInputChange}
 					taskInputValue={this.state.taskInputValue}
+					onTaskDelete={this.props.onTaskDelete}
 				/>
 			</div>
 		);

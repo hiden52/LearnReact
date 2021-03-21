@@ -10,6 +10,7 @@ function initTasks() {
 	const tasks = loadTasks();
 
 	if (tasks) {
+		console.log("Exist!!");
 		return tasks;
 	} else {
         // Must use JSON.stringify() when you store a Array to localstorage of borwser!!
@@ -22,5 +23,9 @@ function inputNewTask(task) {
 	const tasks = loadTasks().concat(task);
 	storage.setItem(TASK, JSON.stringify(tasks));
 }
+function deleteTask(targetTask) {
+	const result = loadTasks().filter(task => task !== targetTask);
+	storage.setItem(TASK, JSON.stringify(result));
+}
 
-export { initTasks, inputNewTask, loadTasks };
+export { initTasks, inputNewTask, loadTasks, deleteTask };
