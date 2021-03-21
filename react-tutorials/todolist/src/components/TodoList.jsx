@@ -9,6 +9,8 @@ class Tasks extends React.Component {
 	};
 
 	handleDeleteTask = (e) => {
+		// FIXME:	삭제했을 때 삭제되는 task 다음 task가 "finished-task" class가 적용되는 
+		//			문제를 해결해야함.
 		if(e.target.classList.contains("finished-task"))
 		this.props.onTaskDelete(e.target.innerText);
 	}
