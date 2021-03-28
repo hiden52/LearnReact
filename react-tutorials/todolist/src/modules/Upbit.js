@@ -41,6 +41,27 @@ fetch(url, options)
 	.then((json) => console.log(json))
 	.catch((err) => console.error("error:" + err));
 
+const qsOrder = { markets: "KRW-HIVE"};
+const oderUrl =
+	"https://api.upbit.com/v1/orderbook?" + querystring.stringify(qsOrder);
+
+fetch(oderUrl, options)
+	.then((res) => res.json())
+	.then((json) => console.log(json))
+	.catch((err) => console.error("error:" + err));
+
+
+const urlNow = 'https://api.upbit.com/v1/ticker?' + querystring.stringify(qsOrder);
+
+
+fetch(urlNow, options)
+  .then(res => res.json())
+  .then(json => console.log(json))
+  .catch(err => console.error('error:' + err));
+
+  // 현재가, 호가, 코드 등등 promise에서 data만 꺼내서 리턴한 다음 리스트로 출력해보자
+  
+
 // const upbitUrl = "https://api.upbit.com/v1/market/all";
 
 // const options = { method: "GET", qs: { isDetails: "false" } };
