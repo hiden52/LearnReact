@@ -1,6 +1,8 @@
+import {marketCodes} from './Upbit';
 const storage = window.localStorage;
+
 const TASK = "tasks";
-const defaultTask = ["Hello! Input a new Task!!"];
+const defaultTask = marketCodes;
 function loadTasks() {
     // If you don't use JSON.parse(), this return a string object instead of a array object!
 	const loadedTasks = JSON.parse(storage.getItem(TASK)) || null ;
